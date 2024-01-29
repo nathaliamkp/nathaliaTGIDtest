@@ -11,6 +11,6 @@ public interface EnterpriseService {
 
     Client getEnterprise();
 
-    void delelteEnterprise();
+    void deleteEnterprise();
 
 }

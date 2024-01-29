@@ -12,7 +12,7 @@ public interface ClientService {
 
     Client getClientById();
 
-    void delelteClient();
+    void deleteClient();
 
 
 
