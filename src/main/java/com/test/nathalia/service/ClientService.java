@@ -14,6 +14,9 @@ public interface ClientService {
 
     void deleteClient();
 
+    void deposite();
+
+    void withdraw();
 
 
 

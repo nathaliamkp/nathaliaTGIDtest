@@ -38,6 +38,12 @@ public class Enterprise implements Serializable {
     @NotNull(message = "this field cannot be null")
     private double tax;
 
+    public Enterprise(String cnpj, String name, double balance, double tax) {
+        this.cnpj = cnpj;
+        this.name = name;
+        this.balance = balance;
+        this.tax = tax;
+    }
 
     private double calcTransationTax(double value){
         return value * tax;
