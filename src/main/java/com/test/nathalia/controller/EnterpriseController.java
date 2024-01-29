@@ -1,43 +1,33 @@
 package com.test.nathalia.controller;
 
+import com.test.nathalia.controller.dto.ClientDTO;
 import com.test.nathalia.controller.dto.EnterpriseDTO;
+import com.test.nathalia.entity.Enterprise;
+import com.test.nathalia.service.EnterpriseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/empresa")
 public class EnterpriseController {
 
-
+    @Autowired
+    private EnterpriseService enterpriseService;
 
 
     @PostMapping
     public ResponseEntity<HttpStatus> createEnterprise(EnterpriseDTO enterpriseDTO){
-        return null;
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping
-    public ResponseEntity<HttpStatus> createClient(){
-        return null;
-    }
 
     @DeleteMapping
     public ResponseEntity<HttpStatus> deleteEnterprise(){
         return null;
     }
-
-    @DeleteMapping
-    public ResponseEntity<HttpStatus> deleteClient(){
-        return null;
-    }
-
-
-
-
 
 
 

@@ -1,6 +1,6 @@
 package com.test.nathalia.entity;
 
-import com.test.nathalia.exception.NoBalanceAvaible;
+import com.test.nathalia.exception.NoBalanceAvailable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,13 +12,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 @Entity(name = "enterprise")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Enterprise implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class Enterprise implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @CNPJ
+    @CNPJ(message = "cnpj must be valid")
     @NotBlank(message = "this field cannot be blank")
     @NotNull(message = "this field cannot be null")
     private String cnpj;
@@ -62,11 +62,11 @@ public class Enterprise implements Serializable {
             if(isValid(value)){
                 this.balance = balance - value;
             }else {
-                throw new NoBalanceAvaible("No balance available");
+                throw new NoBalanceAvailable("No balance available");
             }
 
         }else{
-            throw new NoBalanceAvaible("No balance available");
+            throw new NoBalanceAvailable("No balance available");
         }
 
 

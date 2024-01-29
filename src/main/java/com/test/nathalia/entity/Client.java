@@ -1,6 +1,5 @@
 package com.test.nathalia.entity;
 
-import com.test.nathalia.exception.NoBalanceAvaible;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -16,6 +15,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @CPF
+    @CPF(message = "cpf must be valid")
     @NotBlank(message = "this field cannot be blank")
     @NotNull(message = "this field cannot be null")
     private String cpf;
