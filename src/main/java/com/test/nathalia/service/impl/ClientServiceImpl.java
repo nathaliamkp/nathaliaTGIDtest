@@ -1,6 +1,8 @@
 package com.test.nathalia.service.impl;
 
+import com.test.nathalia.controller.dto.ClientDTO;
 import com.test.nathalia.entity.Client;
+import com.test.nathalia.entity.Enterprise;
 import com.test.nathalia.repository.ClientRepository;
 import com.test.nathalia.repository.EnterpriseRepository;
 import com.test.nathalia.service.ClientService;
@@ -17,7 +19,15 @@ public class ClientServiceImpl implements ClientService {
     private EnterpriseRepository enterpriseRepository;
 
     @Override
-    public void saveClient() {
+    public Client saveClient(Long enterpriseId, ClientDTO clientDTO) {
+
+        return clientRepository.save(Client.builder()
+                        .cpf(clientDTO.cpf())
+                        .name(clientDTO.name())
+                        .email(clientDTO.email())
+                        .enterprise(enterpriseRepository.getReferenceById(enterpriseId))
+
+                .build());
 
     }
 
@@ -32,7 +42,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deposite() {
+    public void deposit() {
 
     }
 

@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CNPJ;
@@ -18,7 +19,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class Enterprise implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,11 +31,9 @@ public class Enterprise implements Serializable {
     @NotBlank(message = "this field cannot be blank")
     @NotNull(message = "this field cannot be null")
     private String cnpj;
-    @NotBlank(message = "this field cannot be blank")
     @NotNull(message = "this field cannot be null")
     private String name;
     private double balance;
-    @NotBlank(message = "this field cannot be blank")
     @NotNull(message = "this field cannot be null")
     private double tax;
 

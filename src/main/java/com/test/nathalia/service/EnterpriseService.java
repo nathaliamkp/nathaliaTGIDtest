@@ -1,15 +1,17 @@
 package com.test.nathalia.service;
 
+import com.test.nathalia.controller.dto.EnterpriseDTO;
 import com.test.nathalia.entity.Client;
+import com.test.nathalia.entity.Enterprise;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface EnterpriseService {
 
 
-    void saveEnterprise();
+    Enterprise saveEnterprise(EnterpriseDTO enterpriseDTO);
 
-    Client getEnterprise();
+    Enterprise getEnterprise();
 
     void deleteEnterprise();
 

@@ -2,6 +2,7 @@ package com.test.nathalia.controller;
 
 import com.test.nathalia.controller.dto.ClientDTO;
 import com.test.nathalia.controller.dto.EnterpriseDTO;
+import com.test.nathalia.controller.dto.TransactionDTO;
 import com.test.nathalia.entity.Enterprise;
 import com.test.nathalia.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/empresa")
+@RequestMapping("/enterprise")
 public class EnterpriseController {
 
     @Autowired
@@ -18,16 +19,17 @@ public class EnterpriseController {
 
 
     @PostMapping
-    public ResponseEntity<HttpStatus> createEnterprise(EnterpriseDTO enterpriseDTO){
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<Enterprise> createEnterprise(@RequestBody EnterpriseDTO enterpriseDTO){
+        //TODO change to return enterpriseResponseDTO
+        return new ResponseEntity<>(enterpriseService.saveEnterprise(enterpriseDTO), HttpStatus.CREATED);
     }
 
 
     @DeleteMapping
     public ResponseEntity<HttpStatus> deleteEnterprise(){
-        return null;
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
 
 
