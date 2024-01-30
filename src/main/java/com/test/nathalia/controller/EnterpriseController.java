@@ -1,8 +1,6 @@
 package com.test.nathalia.controller;
 
-import com.test.nathalia.controller.dto.ClientDTO;
 import com.test.nathalia.controller.dto.EnterpriseDTO;
-import com.test.nathalia.controller.dto.TransactionDTO;
 import com.test.nathalia.entity.Enterprise;
 import com.test.nathalia.service.EnterpriseService;
 import org.springframework.beans.factory.annotation.Autowired;
