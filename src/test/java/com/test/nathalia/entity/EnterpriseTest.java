@@ -13,7 +13,7 @@ class EnterpriseTest {
     void balanceShouldEndWithDepositeLessTax(){
         Enterprise enterprise = new Enterprise("33.113.309/0001-47", "Valid", 1000, 0.1);
 
-        enterprise.deposite(100);
+        enterprise.deposit(100);
 
         double balance = enterprise.getBalance();
 
@@ -25,7 +25,7 @@ class EnterpriseTest {
     void whenThereIsNoTaxDepositeShouldBeTheEntireValue(){
         Enterprise enterprise = new Enterprise("33.113.309/0001-47", "Valid", 1000, 0);
 
-        enterprise.deposite(100);
+        enterprise.deposit(100);
 
         double balance = enterprise.getBalance();
 

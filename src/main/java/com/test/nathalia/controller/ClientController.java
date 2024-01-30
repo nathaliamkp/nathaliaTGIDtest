@@ -2,7 +2,9 @@ package com.test.nathalia.controller;
 
 import com.test.nathalia.controller.dto.ClientDTO;
 import com.test.nathalia.controller.dto.TransactionDTO;
+import com.test.nathalia.entity.Client;
 import com.test.nathalia.service.ClientService;
+import com.test.nathalia.service.impl.ClientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class ClientController {
 
     @Autowired
-    private ClientService clientService;
+    private ClientServiceImpl clientService;
 
-    @PostMapping("/enterprise/{id}/client")
-    public ResponseEntity<HttpStatus> createClient(@PathVariable long enterpriseId, ClientDTO clientDTO){
-        return null;
+    @PostMapping("/enterprise/{enterpriseId}/client")
+    public ResponseEntity<Client> createClient(@PathVariable long enterpriseId, @RequestBody ClientDTO clientDTO){
+        Client client = clientService.saveClient(enterpriseId, clientDTO);
+        return new ResponseEntity<>(client, HttpStatus.CREATED );
     }
 
     @DeleteMapping("/client")
@@ -25,15 +28,15 @@ public class ClientController {
         return null;
     }
 
-    @PostMapping("/enterprise/{enterpriseId}/client/{clientId}/withdraw")
-    public ResponseEntity<HttpStatus> withdraw(@PathVariable Long enterpriseId, @PathVariable Long clientId, @RequestBody TransactionDTO transactionDTO){
-
+    @PostMapping("/client/{clientId}/withdraw")
+    public ResponseEntity<HttpStatus> withdraw(@PathVariable Long clientId, @RequestBody TransactionDTO transactionDTO){
+        clientService.withdraw(clientId, transactionDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PostMapping("/enterprise/{enterpriseId}/client/{clientId}/deposit")
-    public ResponseEntity<HttpStatus> deposit(@PathVariable Long enterpriseId, @PathVariable Long clientId, @RequestBody TransactionDTO transactionDTO){
-
+    @PostMapping("/client/{clientId}/deposit")
+    public ResponseEntity<HttpStatus> deposit(@PathVariable Long clientId, @RequestBody TransactionDTO transactionDTO){
+        clientService.deposit(clientId, transactionDTO);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 

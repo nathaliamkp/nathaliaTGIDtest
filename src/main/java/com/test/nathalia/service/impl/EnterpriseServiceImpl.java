@@ -24,9 +24,14 @@ public class EnterpriseServiceImpl implements EnterpriseService {
                 .build());
     }
 
+    public Enterprise saveEnterprise(Enterprise enterprise){
+       return enterpriseRepository.save(enterprise);
+    }
+
     @Override
-    public Enterprise getEnterprise() {
-        return null;
+    public Enterprise getEnterprise(Long id) {
+
+        return enterpriseRepository.getReferenceById(id);
     }
 
     @Override

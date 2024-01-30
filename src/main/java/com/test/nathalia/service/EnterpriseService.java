@@ -11,8 +11,9 @@ public interface EnterpriseService {
 
     Enterprise saveEnterprise(EnterpriseDTO enterpriseDTO);
 
-    Enterprise getEnterprise();
+    Enterprise getEnterprise(Long id);
 
     void deleteEnterprise();
 
+    Enterprise saveEnterprise(Enterprise enterprise);
 }

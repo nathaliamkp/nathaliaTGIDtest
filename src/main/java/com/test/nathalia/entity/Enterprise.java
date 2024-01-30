@@ -48,11 +48,12 @@ public class Enterprise implements Serializable {
         return value * tax;
     }
 
-    public void deposite(double value){
+    public void deposit(double value){
         double transationTax = calcTransationTax(value);
         value = value - transationTax;
         this.balance = balance + value;
     }
+
 
     public void withdraw(double value){
         if(balance != 0){

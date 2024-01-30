@@ -25,6 +25,11 @@ public class EnterpriseController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Enterprise> findbyId(@PathVariable Long id){
+        return new ResponseEntity<>(enterpriseService.getEnterprise(id), HttpStatus.OK);
+    }
+
     @DeleteMapping
     public ResponseEntity<HttpStatus> deleteEnterprise(){
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
